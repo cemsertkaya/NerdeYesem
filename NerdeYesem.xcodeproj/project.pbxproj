@@ -15,6 +15,10 @@
 		B20374BC25547EFF00913769 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20374BA25547EFF00913769 /* LaunchScreen.storyboard */; };
 		B20374C725547EFF00913769 /* NerdeYesemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374C625547EFF00913769 /* NerdeYesemTests.swift */; };
 		B20374D225547F0000913769 /* NerdeYesemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374D125547F0000913769 /* NerdeYesemUITests.swift */; };
+		B20374E925548D9700913769 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374E825548D9700913769 /* SignUpViewController.swift */; };
+		B20374ED25548E8D00913769 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374EC25548E8D00913769 /* MainPageViewController.swift */; };
+		B20374EF25548E9800913769 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374EE25548E9800913769 /* ListViewController.swift */; };
+		B20374F125548EB500913769 /* SelectedOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374F025548EB500913769 /* SelectedOneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		B20374CD25547EFF00913769 /* NerdeYesemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NerdeYesemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20374D125547F0000913769 /* NerdeYesemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdeYesemUITests.swift; sourceTree = "<group>"; };
 		B20374D325547F0000913769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B20374E825548D9700913769 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B20374EC25548E8D00913769 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		B20374EE25548E9800913769 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B20374F025548EB500913769 /* SelectedOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedOneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +107,9 @@
 		B20374AE25547EFA00913769 /* NerdeYesem */ = {
 			isa = PBXGroup;
 			children = (
+				B20374DF25548D1900913769 /* Controllers */,
 				B20374AF25547EFA00913769 /* AppDelegate.swift */,
 				B20374B125547EFA00913769 /* SceneDelegate.swift */,
-				B20374B325547EFA00913769 /* ViewController.swift */,
 				B20374B525547EFB00913769 /* Main.storyboard */,
 				B20374B825547EFF00913769 /* Assets.xcassets */,
 				B20374BA25547EFF00913769 /* LaunchScreen.storyboard */,
@@ -126,6 +134,18 @@
 				B20374D325547F0000913769 /* Info.plist */,
 			);
 			path = NerdeYesemUITests;
+			sourceTree = "<group>";
+		};
+		B20374DF25548D1900913769 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B20374B325547EFA00913769 /* ViewController.swift */,
+				B20374EC25548E8D00913769 /* MainPageViewController.swift */,
+				B20374EE25548E9800913769 /* ListViewController.swift */,
+				B20374E825548D9700913769 /* SignUpViewController.swift */,
+				B20374F025548EB500913769 /* SelectedOneViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +279,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B20374ED25548E8D00913769 /* MainPageViewController.swift in Sources */,
+				B20374E925548D9700913769 /* SignUpViewController.swift in Sources */,
+				B20374F125548EB500913769 /* SelectedOneViewController.swift in Sources */,
+				B20374EF25548E9800913769 /* ListViewController.swift in Sources */,
 				B20374B425547EFB00913769 /* ViewController.swift in Sources */,
 				B20374B025547EFA00913769 /* AppDelegate.swift in Sources */,
 				B20374B225547EFA00913769 /* SceneDelegate.swift in Sources */,
@@ -437,6 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNUQ32JH3W;
 				INFOPLIST_FILE = NerdeYesem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,6 +480,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNUQ32JH3W;
 				INFOPLIST_FILE = NerdeYesem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
