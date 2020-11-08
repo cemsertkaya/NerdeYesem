@@ -4,8 +4,8 @@ TODO LIST
 1-)Basic design of app DONE
 2-)Implemantation of TableViewController-NavigationController DONE
 3-)Taking Location and connect api to our app DONE
-4-)Algorithm of getting restaurants whose location are close to us
-5-)Implement these restaurants to table view
+4-)Algorithm of getting restaurants whose location are close to us DONE
+5-)Implement these restaurants to table view DONE
 6-)Implementing firebase
 7-)Implementing user login
 8-)Implementing most prefered restaurants to firebase

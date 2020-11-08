@@ -365,7 +365,7 @@
                     <navigationItem key="navigationItem" id="UGc-xj-erl"/>
                     <connections>
                         <outlet property="tableView" destination="oiV-Df-0rS" id="31W-e1-OFf"/>
-                        <segue destination="gpD-Qj-JYk" kind="show" id="rqP-MJ-oQS"/>
+                        <segue destination="gpD-Qj-JYk" kind="show" identifier="toShowRest" id="rqP-MJ-oQS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXl-KE-lD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -379,14 +379,129 @@
                     <view key="view" contentMode="scaleToFill" id="9jC-1B-jMk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJE-Qh-KXO">
+                                <rect key="frame" x="67" y="288" width="240" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="tYE-69-uUu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-xm-MsR">
+                                <rect key="frame" x="67" y="353" width="240" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="RWA-Ar-BUw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-z6-sgN">
+                                <rect key="frame" x="112" y="595" width="151" height="30"/>
+                                <color key="backgroundColor" red="0.74901960779999999" green="0.019607843140000001" blue="0.019607843140000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ssR-N6-cA0"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Look at the photos"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="seePhotosButtonAction:" destination="gpD-Qj-JYk" eventType="touchUpInside" id="1VL-tE-XOR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTr-hH-RQs">
+                                <rect key="frame" x="112" y="536" width="151" height="30"/>
+                                <color key="backgroundColor" red="0.74901960779999999" green="0.019607843140000001" blue="0.019607843140000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TxI-Sg-10m"/>
+                                </constraints>
+                                <state key="normal" title="Take a photo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="takePhotoButtonAction:" destination="gpD-Qj-JYk" eventType="touchUpInside" id="Ewl-ce-0i4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cP-pt-bXo">
+                                <rect key="frame" x="67" y="422" width="240" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="sBL-Ol-PRe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Zomato Link">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="urlButtonClicked:" destination="gpD-Qj-JYk" eventType="touchUpInside" id="UJm-yZ-7eH"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="lvU-EN-BMF">
+                                <rect key="frame" x="67" y="106" width="240" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Sc-Dp-ard">
+                                <rect key="frame" x="67" y="475" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SNf-za-lk9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Location">
+                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="adressButtonClicked:" destination="gpD-Qj-JYk" eventType="touchUpInside" id="Kef-Wg-6P4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6cP-pt-bXo" firstAttribute="leading" secondItem="1Sc-Dp-ard" secondAttribute="leading" id="444-Kt-k4e"/>
+                            <constraint firstItem="oJE-Qh-KXO" firstAttribute="leading" secondItem="P1h-xm-MsR" secondAttribute="leading" id="7cE-s0-lq7"/>
+                            <constraint firstItem="LTr-hH-RQs" firstAttribute="trailing" secondItem="dEO-z6-sgN" secondAttribute="trailing" id="E17-ca-Usc"/>
+                            <constraint firstItem="oJE-Qh-KXO" firstAttribute="trailing" secondItem="P1h-xm-MsR" secondAttribute="trailing" id="Fdc-Ya-qIn"/>
+                            <constraint firstItem="lvU-EN-BMF" firstAttribute="leading" secondItem="oJE-Qh-KXO" secondAttribute="leading" id="H4z-Ch-wS1"/>
+                            <constraint firstItem="lvU-EN-BMF" firstAttribute="centerX" secondItem="9jC-1B-jMk" secondAttribute="centerX" id="NfK-nw-OAR"/>
+                            <constraint firstItem="LTr-hH-RQs" firstAttribute="leading" secondItem="dEO-z6-sgN" secondAttribute="leading" id="S2I-vZ-Q8Z"/>
+                            <constraint firstItem="P1h-xm-MsR" firstAttribute="leading" secondItem="6cP-pt-bXo" secondAttribute="leading" id="SUX-Rq-Nsw"/>
+                            <constraint firstItem="lvU-EN-BMF" firstAttribute="leading" secondItem="PKN-wI-hMx" secondAttribute="leading" constant="67" id="V4U-oh-ogw"/>
+                            <constraint firstItem="6cP-pt-bXo" firstAttribute="trailing" secondItem="1Sc-Dp-ard" secondAttribute="trailing" id="VJ5-Wy-QJb"/>
+                            <constraint firstItem="P1h-xm-MsR" firstAttribute="top" secondItem="oJE-Qh-KXO" secondAttribute="bottom" constant="44" id="Vsm-Ub-QpD"/>
+                            <constraint firstItem="P1h-xm-MsR" firstAttribute="trailing" secondItem="6cP-pt-bXo" secondAttribute="trailing" id="WkO-OM-rt5"/>
+                            <constraint firstItem="oJE-Qh-KXO" firstAttribute="top" secondItem="lvU-EN-BMF" secondAttribute="bottom" constant="54" id="Wty-c5-Wsg"/>
+                            <constraint firstItem="1Sc-Dp-ard" firstAttribute="top" secondItem="6cP-pt-bXo" secondAttribute="bottom" constant="32" id="X7Y-N3-HWP"/>
+                            <constraint firstItem="1Sc-Dp-ard" firstAttribute="centerX" secondItem="LTr-hH-RQs" secondAttribute="centerX" id="bAI-JQ-TRK"/>
+                            <constraint firstItem="LTr-hH-RQs" firstAttribute="leading" secondItem="PKN-wI-hMx" secondAttribute="leading" constant="112" id="cef-b7-5ze"/>
+                            <constraint firstItem="PKN-wI-hMx" firstAttribute="bottom" secondItem="dEO-z6-sgN" secondAttribute="bottom" constant="42" id="d2E-Db-lvN"/>
+                            <constraint firstItem="lvU-EN-BMF" firstAttribute="trailing" secondItem="oJE-Qh-KXO" secondAttribute="trailing" id="gFG-0b-CX6"/>
+                            <constraint firstItem="lvU-EN-BMF" firstAttribute="top" secondItem="PKN-wI-hMx" secondAttribute="top" constant="62" id="m4i-RP-ceQ"/>
+                            <constraint firstItem="LTr-hH-RQs" firstAttribute="top" secondItem="1Sc-Dp-ard" secondAttribute="bottom" constant="31" id="pem-an-Ur2"/>
+                            <constraint firstItem="6cP-pt-bXo" firstAttribute="top" secondItem="P1h-xm-MsR" secondAttribute="bottom" constant="48" id="yio-XQ-xuW"/>
+                            <constraint firstItem="dEO-z6-sgN" firstAttribute="top" secondItem="LTr-hH-RQs" secondAttribute="bottom" constant="29" id="yk2-BW-fBG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PKN-wI-hMx"/>
                     </view>
                     <navigationItem key="navigationItem" id="3h7-r5-A1L"/>
+                    <connections>
+                        <outlet property="addressButton" destination="1Sc-Dp-ard" id="Tln-rZ-fmR"/>
+                        <outlet property="cuisineLabel" destination="P1h-xm-MsR" id="84y-op-yJt"/>
+                        <outlet property="imageView" destination="lvU-EN-BMF" id="4ma-nO-dRv"/>
+                        <outlet property="nameLabel" destination="oJE-Qh-KXO" id="Iag-zB-anL"/>
+                        <outlet property="urlButton" destination="6cP-pt-bXo" id="aXV-nQ-Gy3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQY-G8-bIl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4042" y="107"/>
+            <point key="canvasLocation" x="4040.8000000000002" y="106.59670164917542"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wNx-EL-e1r">
@@ -431,4 +546,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="DYg-2X-deo"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="noimage" width="359" height="366"/>
+    </resources>
 </document>

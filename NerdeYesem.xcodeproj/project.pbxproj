@@ -142,10 +142,10 @@
 		B20374DF25548D1900913769 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B20374E825548D9700913769 /* SignUpViewController.swift */,
 				B20374B325547EFA00913769 /* ViewController.swift */,
 				B20374EC25548E8D00913769 /* MainPageViewController.swift */,
 				B20374EE25548E9800913769 /* ListViewController.swift */,
-				B20374E825548D9700913769 /* SignUpViewController.swift */,
 				B20374F025548EB500913769 /* SelectedOneViewController.swift */,
 			);
 			path = Controllers;
