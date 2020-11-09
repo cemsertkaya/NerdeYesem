@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import Firebase
 class MainPageViewController: UIViewController,CLLocationManagerDelegate {
 
     @IBOutlet weak var mapKit: MKMapView!
@@ -17,7 +17,6 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
     var newLocationLatitude = Double()//Our new location's latitude value
     var newLocationLongitude = Double()//Our new location's longitude value
     var nearRestaurants = [Restaurant]()
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var findButton: UIButton!
     
     override func viewDidLoad() {
@@ -91,8 +90,8 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
                 {
                     do {
                         let jSONResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, AnyObject>
-                        var nearbyRestaurantsMap = jSONResult["nearby_restaurants"]
-                        for restaurantMap in nearbyRestaurantsMap as! [AnyObject]
+                        let nearbyRestaurantsMap = jSONResult["nearby_restaurants"]
+                        for restaurantMap in nearbyRestaurantsMap as! [[String: Any]]
                         {
                             let newRestaurant = (restaurantMap["restaurant"]) as! Dictionary <String, AnyObject>
                             let newRestaurantAddress = (newRestaurant["location"]) as!  Dictionary <String, AnyObject>
@@ -116,6 +115,16 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
             let destinationVC = segue.destination as! ListViewController
             destinationVC.listNearRestaurants = self.nearRestaurants
         }
+    }
+    @IBAction func signOutButtonAction(_ sender: Any)
+    {
+        do
+        {
+           try Auth.auth().signOut()
+           self.performSegue(withIdentifier: "signOut", sender: self)
+           
+        }
+        catch{print("SignOutError")}
     }
 }
 extension LosslessStringConvertible {
