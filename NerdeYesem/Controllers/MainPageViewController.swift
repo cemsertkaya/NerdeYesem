@@ -10,25 +10,31 @@ import UIKit
 import MapKit
 import CoreLocation
 import Firebase
-class MainPageViewController: UIViewController,CLLocationManagerDelegate {
+class MainPageViewController: UIViewController,CLLocationManagerDelegate
+{
 
     @IBOutlet weak var mapKit: MKMapView!
     let locationManager = CLLocationManager()
-    var newLocationLatitude = Double()//Our new location's latitude value
-    var newLocationLongitude = Double()//Our new location's longitude value
+    ///New location's latitude value
+    var newLocationLatitude = Double()
+    ///New location's longitude value
+    var newLocationLongitude = Double()
+    ///Restaurants array for keeping Restaurant objects
     var nearRestaurants = [Restaurant]()
     @IBOutlet weak var findButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)//Alert for waiting
+        //Alert for waiting
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
-        locationManager.requestAlwaysAuthorization()//Finding location
+        //It calls the functions that call
+        locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled()
         {
@@ -41,7 +47,8 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBAction func findButtonAction(_ sender: Any)//Our new location will have been refreshing when we tap the button
     {
-        if nearRestaurants.count > 0//If decoding is okay we can go to the list page
+        //If decoding is okay we can go to the list page
+        if nearRestaurants.count > 0
         {
              self.performSegue(withIdentifier: "toListController", sender: self)
         }
@@ -49,13 +56,16 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        self.newLocationLatitude = locValue.latitude//We are getting the latitude over here
-        self.newLocationLongitude = locValue.longitude//We are getting the longitude over here
-        let location = CLLocation(latitude: self.newLocationLatitude, longitude: self.newLocationLongitude)//Mapkit location
+        //We are getting the latitude over here
+        self.newLocationLatitude = locValue.latitude
+        //We are getting the longitude over here
+        self.newLocationLongitude = locValue.longitude
+        //Mapkit location
+        let location = CLLocation(latitude: self.newLocationLatitude, longitude: self.newLocationLongitude)
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 7000, longitudinalMeters: 7000)
         mapKit.setRegion(coordinateRegion, animated: true)
-        let annotation = MKPointAnnotation()//Mapkit pin to our location
+        //Mapkit pin to our location
+        let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: self.newLocationLatitude, longitude: self.newLocationLongitude)
         annotation.title = "You're here"
         mapKit.addAnnotation(annotation)
@@ -63,6 +73,7 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
         findRestaurants()
     }
     
+    ///Gets restaurants from zomato api
     func findRestaurants()
     {
        self.nearRestaurants.removeAll(keepingCapacity: false)
@@ -86,7 +97,8 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
             }
             else
             {
-                if data != nil//We're decoded the data that came from api
+                //We're decoded the data that came from api
+                if data != nil
                 {
                     do {
                         let jSONResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, AnyObject>
@@ -95,8 +107,10 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
                         {
                             let newRestaurant = (restaurantMap["restaurant"]) as! Dictionary <String, AnyObject>
                             let newRestaurantAddress = (newRestaurant["location"]) as!  Dictionary <String, AnyObject>
-                            let restaurant = Restaurant(id: newRestaurant["id"] as! String, name: newRestaurant["name"] as! String, url: newRestaurant["url"] as! String,address: newRestaurantAddress["address"] as! String,image: newRestaurant["featured_image"] as! String, cuisines:  newRestaurant["cuisines"] as! String)//After decoding the data  we created a restaurant object
-                            self.nearRestaurants.append(restaurant)//We added our restaurant objects to nearRestaurants array for using other view controllers's table view
+                            //After decoding the data  we created a restaurant object
+                            let restaurant = Restaurant(id: newRestaurant["id"] as! String, name: newRestaurant["name"] as! String, url: newRestaurant["url"] as! String,address: newRestaurantAddress["address"] as! String,image: newRestaurant["featured_image"] as! String, cuisines:  newRestaurant["cuisines"] as! String)
+                            //We added our restaurant objects to nearRestaurants array for using other view controllers's table view
+                            self.nearRestaurants.append(restaurant)
                         }
                         self.dismiss(animated: false, completion: nil)
                     }
@@ -108,14 +122,17 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
     }.resume()
     }
     
+    ///It gives nearRestaurants array to other view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier == "toListController"//Giving nearRestaurants array to other view controller
+        if segue.identifier == "toListController"
         {
             let destinationVC = segue.destination as! ListViewController
             destinationVC.listNearRestaurants = self.nearRestaurants
         }
     }
+    
+    ///SignOut Button Clicked Function, it does sign out operation.
     @IBAction func signOutButtonAction(_ sender: Any)
     {
         do
@@ -126,6 +143,9 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate {
         }
         catch{print("SignOutError")}
     }
+    
+   
+    
 }
 extension LosslessStringConvertible {
     var string: String { .init(self) }

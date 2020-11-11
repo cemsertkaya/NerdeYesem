@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
-
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordAgainField: UITextField!
@@ -50,12 +50,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
             
    }
   
+    ///Starts Editing The Text Field
     @objc func didTapView(gesture: UITapGestureRecognizer){view.endEditing(true)}
-    // Start Editing The Text Field
     func textFieldDidBeginEditing(_ textField: UITextField) {moveTextField(textField, moveDistance: -80, up: true)}
-    // Finish Editing The Text Field
+    /// Finishes Editing The Text Field
     func textFieldDidEndEditing(_ textField: UITextField) {moveTextField(textField, moveDistance: -80, up: false)}
-    // Move the text field in a pretty animation
+    /// Moves the text field in a pretty animation
     func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool)
     {
         let moveDuration = 0.3
@@ -66,7 +66,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
     }
-    // Hide the keyboard when the return key pressed
+    /// Hides the keyboard when the return key pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {textField.resignFirstResponder();return true}
     func makeAlert(titleInput:String, messageInput:String)//Alert method with parameters
     {

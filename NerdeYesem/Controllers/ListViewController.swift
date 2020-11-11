@@ -19,9 +19,9 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
+    ///Classical table view functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{return listNearRestaurants.count}
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -48,6 +48,8 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {return 38}
 
 }
+
+
 
 class RestCell: UITableViewCell
 {

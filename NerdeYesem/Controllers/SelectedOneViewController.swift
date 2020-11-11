@@ -8,19 +8,28 @@
 
 import UIKit
 import CoreLocation
-
+import Firebase
 class SelectedOneViewController: UIViewController
 {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cuisineLabel: UILabel!
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var addressButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
+    ////It checks whether the user likes or not
+    var isUserLiked = Bool()
+    
+    ///Current user on firebase
+    let user = Auth.auth().currentUser
     var selectedRestaurant = Restaurant(id: "", name: "", url: "", address: "", image: "", cuisines: "")
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        getLikers()
+        //If the restaurant has an image it loads it to view controller
         if selectedRestaurant.getImage() != ""
         {
             let url = URL(string:selectedRestaurant.getImage() as! String)
@@ -33,14 +42,27 @@ class SelectedOneViewController: UIViewController
         addressButton.setTitle(selectedRestaurant.getAddress(), for: .normal)
         
     }
-    @IBAction func takePhotoButtonAction(_ sender: Any) {}
-    @IBAction func seePhotosButtonAction(_ sender: Any) {}
-    @IBAction func urlButtonClicked(_ sender: Any)//Open url link on safari
+    
+    ///Takes photos to load firestore
+    @IBAction func takePhotoButtonAction(_ sender: Any)
+    {
+        
+    }
+    
+    @IBAction func seePhotosButtonAction(_ sender: Any)
+    {
+        
+    }
+    
+    ///Opens url link on safari
+    @IBAction func urlButtonClicked(_ sender: Any)
     {
         guard let url = URL(string: self.selectedRestaurant.getUrl()) else { return }
         UIApplication.shared.open(url)
     }
-    @IBAction func adressButtonClicked(_ sender: Any)//Show location on apple map
+    
+    ///Shows location on apple map
+    @IBAction func adressButtonClicked(_ sender: Any)
     {
        let myAddress = selectedRestaurant.getAddress()
        let geoCoder = CLGeocoder()
@@ -51,6 +73,75 @@ class SelectedOneViewController: UIViewController
            UIApplication.shared.open(url)
        }
     }
-
+    
+    ///Adds the restaurant to most prefered restaurants
+    @IBAction func likeRestaurantButtonClicked(_ sender: Any)
+    {
+        let db = Firestore.firestore()
+        //If user has already liked, it can be unliked
+        if isUserLiked
+        {
+            db.collection("favorites").document(self.selectedRestaurant.getId()).getDocument { (snapshot, error ) in
+                if  (snapshot?.exists)!//User document exist
+                {
+                    db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayRemove([self.user!.uid])])
+                    self.getLikers()
+                }
+            }
+        }
+        // If user hasn't liked yet, it can be liked
+        else
+        {
+            db.collection("favorites").document(self.selectedRestaurant.getId()).getDocument { (snapshot, error ) in
+                if  (snapshot?.exists)!//User document exist
+                {
+                     db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid])])
+                    self.getLikers()
+                }
+                else//User Document does not exist, first it creates document
+                {
+                    db.collection("favorites").document(self.selectedRestaurant.getId()).setData(["favoritedBy":[String]()])
+                    db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid])])
+                    self.getLikers()
+                }
+            }
+        }
+        
+        
+    }
+    
+    ///Gets the favoritedBy array from firebase and changes Like count
+    func getLikers ()
+    {
+        var numberOfLikers = Int()
+        let db = Firestore.firestore()
+        db.collection("favorites").document(self.selectedRestaurant.getId()).getDocument { (snapshot, error ) in
+            //User document exist, it gets the number of likers
+            if  (snapshot?.exists)!
+            {
+                    let favoritedBy = snapshot?.get("favoritedBy") as! [String]
+                    numberOfLikers = (favoritedBy).count
+                    //It checks whether the user likes or not and changes the button title Like->Unlike
+                    if favoritedBy.contains(self.user!.uid)
+                    {
+                        self.likeButton.setTitle("Liked \(numberOfLikers)", for: .normal)
+                        self.isUserLiked = true
+                    }
+                   else
+                    {
+                        self.likeButton.setTitle("Like \(numberOfLikers)", for: .normal)
+                        self.isUserLiked = false
+                    }
+                    print(String(numberOfLikers))
+            }
+            //User Document does not exist likers number will be 0
+            else
+            {
+                numberOfLikers = 0
+                self.likeButton.setTitle("Like \(numberOfLikers)", for: .normal)
+            }
+            
+        }
+    }
     
 }
