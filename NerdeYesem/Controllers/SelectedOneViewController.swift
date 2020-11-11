@@ -9,18 +9,18 @@
 import UIKit
 import CoreLocation
 import Firebase
-class SelectedOneViewController: UIViewController
+class SelectedOneViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
-    
+    var imagePicker: UIImagePickerController!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cuisineLabel: UILabel!
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var addressButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+    
     ////It checks whether the user likes or not
     var isUserLiked = Bool()
-    
     ///Current user on firebase
     let user = Auth.auth().currentUser
     var selectedRestaurant = Restaurant(id: "", name: "", url: "", address: "", image: "", cuisines: "")
@@ -46,7 +46,16 @@ class SelectedOneViewController: UIViewController
     ///Takes photos to load firestore
     @IBAction func takePhotoButtonAction(_ sender: Any)
     {
-        
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        imagePicker.dismiss(animated: true, completion: nil)
+        //Firebase setting
     }
     
     @IBAction func seePhotosButtonAction(_ sender: Any)
