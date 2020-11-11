@@ -631,6 +631,7 @@
                     <navigationItem key="navigationItem" id="o9o-Fh-oqj"/>
                     <connections>
                         <outlet property="tableView" destination="3xA-GJ-wXP" id="dra-F3-SFw"/>
+                        <segue destination="gpD-Qj-JYk" kind="show" identifier="toSingleRestFromFavorites" id="ypT-Sw-xTC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEw-L6-Vq2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -640,6 +641,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="TS6-7c-Txm"/>
+        <segue reference="ypT-Sw-xTC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="noimage" width="359" height="366"/>

@@ -100,7 +100,7 @@ class SelectedOneViewController: UIViewController
                 }
                 else//User Document does not exist, first it creates document
                 {
-                    db.collection("favorites").document(self.selectedRestaurant.getId()).setData(["favoritedBy":[String]()])
+                    db.collection("favorites").document(self.selectedRestaurant.getId()).setData(["favoritedBy":[String](),"name":self.selectedRestaurant.getName(),"photo":self.selectedRestaurant.getImage(),"url":self.selectedRestaurant.getUrl(),"address": self.selectedRestaurant.getAddress(),"cuisine":self.selectedRestaurant.getCuisines()])
                     db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid])])
                     self.getLikers()
                 }
