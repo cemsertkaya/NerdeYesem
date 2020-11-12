@@ -22,9 +22,11 @@
 		B20374ED25548E8D00913769 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374EC25548E8D00913769 /* MainPageViewController.swift */; };
 		B20374EF25548E9800913769 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374EE25548E9800913769 /* ListViewController.swift */; };
 		B20374F125548EB500913769 /* SelectedOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20374F025548EB500913769 /* SelectedOneViewController.swift */; };
+		B20441D9255D837500BC105F /* photoGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20441D8255D837500BC105F /* photoGalleryController.swift */; };
 		B22F060F2558780800228322 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B22F060E2558780700228322 /* GoogleService-Info.plist */; };
 		B2943088255554F800A0714C /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2943087255554F800A0714C /* Restaurant.swift */; };
 		B29F48A4255AC1FD003CEE4C /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29F48A3255AC1FD003CEE4C /* Favorites.swift */; };
+		B2BCDF25255DD233007B85D3 /* BiometricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BCDF24255DD233007B85D3 /* BiometricsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +73,11 @@
 		B20374EC25548E8D00913769 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		B20374EE25548E9800913769 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B20374F025548EB500913769 /* SelectedOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedOneViewController.swift; sourceTree = "<group>"; };
+		B20441D8255D837500BC105F /* photoGalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoGalleryController.swift; sourceTree = "<group>"; };
 		B22F060E2558780700228322 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2943087255554F800A0714C /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		B29F48A3255AC1FD003CEE4C /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		B2BCDF24255DD233007B85D3 /* BiometricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsViewController.swift; sourceTree = "<group>"; };
 		B8C0F5DC7A06248B20190A48 /* Pods-NerdeYesem-NerdeYesemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NerdeYesem-NerdeYesemUITests.debug.xcconfig"; path = "Target Support Files/Pods-NerdeYesem-NerdeYesemUITests/Pods-NerdeYesem-NerdeYesemUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +197,8 @@
 				B20374EE25548E9800913769 /* ListViewController.swift */,
 				B20374F025548EB500913769 /* SelectedOneViewController.swift */,
 				B29F48A3255AC1FD003CEE4C /* Favorites.swift */,
+				B20441D8255D837500BC105F /* photoGalleryController.swift */,
+				B2BCDF24255DD233007B85D3 /* BiometricsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -450,8 +456,10 @@
 				B20374E925548D9700913769 /* SignUpViewController.swift in Sources */,
 				B20374F125548EB500913769 /* SelectedOneViewController.swift in Sources */,
 				B20374EF25548E9800913769 /* ListViewController.swift in Sources */,
+				B20441D9255D837500BC105F /* photoGalleryController.swift in Sources */,
 				B2943088255554F800A0714C /* Restaurant.swift in Sources */,
 				B20374B425547EFB00913769 /* ViewController.swift in Sources */,
+				B2BCDF25255DD233007B85D3 /* BiometricsViewController.swift in Sources */,
 				B20374B025547EFA00913769 /* AppDelegate.swift in Sources */,
 				B20374B225547EFA00913769 /* SceneDelegate.swift in Sources */,
 			);

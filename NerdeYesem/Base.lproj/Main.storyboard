@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kio-Qx-htX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="54e-q1-jZ9">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -518,13 +518,66 @@
                         <outlet property="cuisineLabel" destination="P1h-xm-MsR" id="84y-op-yJt"/>
                         <outlet property="imageView" destination="lvU-EN-BMF" id="4ma-nO-dRv"/>
                         <outlet property="likeButton" destination="Ma4-lo-iqP" id="cNX-KE-drT"/>
+                        <outlet property="lookPhotosButton" destination="dEO-z6-sgN" id="svl-Tb-GsE"/>
                         <outlet property="nameLabel" destination="oJE-Qh-KXO" id="Iag-zB-anL"/>
+                        <outlet property="takePhotoButton" destination="LTr-hH-RQs" id="SjT-N2-Cw5"/>
                         <outlet property="urlButton" destination="6cP-pt-bXo" id="aXV-nQ-Gy3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQY-G8-bIl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4040.8000000000002" y="106.59670164917542"/>
+        </scene>
+        <!--Biometrics View Controller-->
+        <scene sceneID="z8V-qT-Ruo">
+            <objects>
+                <viewController id="54e-q1-jZ9" customClass="BiometricsViewController" customModule="NerdeYesem" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X0Z-Vp-0np">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="faceid" translatesAutoresizingMaskIntoConstraints="NO" id="DiZ-5O-fMv">
+                                <rect key="frame" x="67" y="135" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="3Gr-ay-xS7"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TouchID" translatesAutoresizingMaskIntoConstraints="NO" id="ynu-BG-STV">
+                                <rect key="frame" x="67" y="362" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKi-As-JAi">
+                                <rect key="frame" x="16" y="304" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="us3-fm-hmM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DiZ-5O-fMv" firstAttribute="leading" secondItem="5n6-fD-we4" secondAttribute="leading" constant="67" id="6VJ-SA-ZSE"/>
+                            <constraint firstItem="lKi-As-JAi" firstAttribute="centerX" secondItem="ynu-BG-STV" secondAttribute="centerX" id="8ny-6H-TYy"/>
+                            <constraint firstItem="ynu-BG-STV" firstAttribute="top" secondItem="lKi-As-JAi" secondAttribute="bottom" constant="37" id="9lP-Yd-kUd"/>
+                            <constraint firstItem="lKi-As-JAi" firstAttribute="trailing" secondItem="X0Z-Vp-0np" secondAttribute="trailingMargin" id="Bhd-Td-0EX"/>
+                            <constraint firstItem="5n6-fD-we4" firstAttribute="bottom" secondItem="ynu-BG-STV" secondAttribute="bottom" constant="177" id="Mug-Gq-iPU"/>
+                            <constraint firstItem="DiZ-5O-fMv" firstAttribute="leading" secondItem="ynu-BG-STV" secondAttribute="leading" id="Nmn-5N-GCI"/>
+                            <constraint firstItem="lKi-As-JAi" firstAttribute="leading" secondItem="X0Z-Vp-0np" secondAttribute="leadingMargin" id="YQY-03-feK"/>
+                            <constraint firstItem="DiZ-5O-fMv" firstAttribute="top" secondItem="5n6-fD-we4" secondAttribute="top" constant="135" id="lQW-WB-3Ud"/>
+                            <constraint firstItem="DiZ-5O-fMv" firstAttribute="trailing" secondItem="ynu-BG-STV" secondAttribute="trailing" id="slB-ka-M9P"/>
+                            <constraint firstItem="lKi-As-JAi" firstAttribute="top" secondItem="DiZ-5O-fMv" secondAttribute="bottom" constant="41" id="yW6-ka-nvo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5n6-fD-we4"/>
+                    </view>
+                    <connections>
+                        <segue destination="Kio-Qx-htX" kind="presentation" identifier="toSignUp" modalPresentationStyle="fullScreen" id="NkG-W8-6kH"/>
+                        <segue destination="Hfh-yQ-rOb" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="Qpf-Zg-0ff"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4DI-9N-nDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-836.13193403298362"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wNx-EL-e1r">
@@ -640,10 +693,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TS6-7c-Txm"/>
-        <segue reference="ypT-Sw-xTC"/>
+        <segue reference="Qpf-Zg-0ff"/>
+        <segue reference="NkG-W8-6kH"/>
+        <segue reference="rqP-MJ-oQS"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="TouchID" width="800" height="600"/>
+        <image name="faceid" width="200" height="200"/>
         <image name="noimage" width="359" height="366"/>
     </resources>
 </document>

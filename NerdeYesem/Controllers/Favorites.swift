@@ -74,6 +74,7 @@ class Favorites: UIViewController,UITableViewDelegate,UITableViewDataSource
         {
             let destinationVC = segue.destination as! SelectedOneViewController
             destinationVC.selectedRestaurant = self.selectedRestaurant
+            destinationVC.isPhotoButtonsNeeded = true
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {return 38}

@@ -8,8 +8,7 @@ TODO LIST
 5-)Implement these restaurants to table view DONE
 6-)Implementing firebase DONE
 7-)Implementing user login and signup DONE
-8-)Implementing most prefered restaurants to firebase
-9-)Taking photo and upload it to cloud
-10-)Fıngerprint Details
-
+8-)Implementing most prefered restaurants to firebase DONE
+9-)Taking photo and upload it to cloud DONE
+10-)Fıngerprint Details DONE
 

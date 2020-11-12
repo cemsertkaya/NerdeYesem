@@ -12,20 +12,9 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
-   
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions)
     {
-        let currentUser = Auth.auth().currentUser //For holding current user
-        if currentUser != nil
-        {
-           let board = UIStoryboard(name: "Main", bundle: nil)
-           let main = board.instantiateViewController(identifier: "MainPageNavi")
-           self.window?.rootViewController = main
-        }
         guard let _ = (scene as? UIWindowScene) else { return }
-        
     }
 
     

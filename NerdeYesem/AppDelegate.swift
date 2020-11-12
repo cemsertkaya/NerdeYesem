@@ -17,13 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        let currentUser = Auth.auth().currentUser //For holding current user
-        if currentUser != nil
-        {
-           let board = UIStoryboard(name: "Main", bundle: nil)
-           let main = board.instantiateViewController(withIdentifier: "MainPageNavi")
-           self.window?.rootViewController = main
-        }
         return true
     }
 

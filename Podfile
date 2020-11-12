@@ -19,6 +19,7 @@ target 'NerdeYesem' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'SwiftPhotoGallery'
   
 
 end
