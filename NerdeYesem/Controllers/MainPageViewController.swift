@@ -71,6 +71,8 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate
         mapKit.addAnnotation(annotation)
         locationManager.delegate = nil
         findRestaurants()
+
+       
     }
     
     ///Gets restaurants from zomato api
@@ -112,7 +114,10 @@ class MainPageViewController: UIViewController,CLLocationManagerDelegate
                             //We added our restaurant objects to nearRestaurants array for using other view controllers's table view
                             self.nearRestaurants.append(restaurant)
                         }
-                        self.dismiss(animated: false, completion: nil)
+                        DispatchQueue.main.async {
+                           self.dismiss(animated: false, completion: nil)
+                        }
+                       
                     }
                     catch {
                         //print("Error")

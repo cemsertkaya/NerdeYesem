@@ -191,14 +191,15 @@ class SelectedOneViewController: UIViewController, UINavigationControllerDelegat
                 if  (snapshot?.exists)!
                 {
                     let favoritedBy = snapshot?.get("favoritedBy") as! [String]
+                    let favoritedByCount = snapshot?.get("favoritedByCount") as! Int
                     //If this user is the only liker of this restaurant, when user unlike we have to delete document
-                    if favoritedBy.count == 1
+                    if favoritedByCount == 1
                     {
                         self.db.collection("favorites").document(self.selectedRestaurant.getId()).delete()
                     }
                     else
                     {
-                        self.db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayRemove([self.user!.uid])])
+                        self.db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayRemove([self.user!.uid]),"favoritedByCount":favoritedByCount-1])
                     }
                     self.getLikers()
                 }
@@ -210,12 +211,14 @@ class SelectedOneViewController: UIViewController, UINavigationControllerDelegat
             self.db.collection("favorites").document(self.selectedRestaurant.getId()).getDocument { (snapshot, error ) in
                 if  (snapshot?.exists)!
                 {
-                    self.db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid])])
+                    let favoritedBy = snapshot?.get("favoritedBy") as! [String]
+                    let favoritedByCount = snapshot?.get("favoritedByCount") as! Int
+                    self.db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid]),"favoritedByCount":favoritedByCount-1])
                     self.getLikers()
                 }
                 else//User Document does not exist, first it creates document
                 {
-                    self.db.collection("favorites").document(self.selectedRestaurant.getId()).setData(["favoritedBy":[String](),"name":self.selectedRestaurant.getName(),"photo":self.selectedRestaurant.getImage(),"url":self.selectedRestaurant.getUrl(),"address": self.selectedRestaurant.getAddress(),"cuisine":self.selectedRestaurant.getCuisines(),"photos":[String]()])
+                    self.db.collection("favorites").document(self.selectedRestaurant.getId()).setData(["favoritedBy":[String](),"name":self.selectedRestaurant.getName(),"photo":self.selectedRestaurant.getImage(),"url":self.selectedRestaurant.getUrl(),"address": self.selectedRestaurant.getAddress(),"cuisine":self.selectedRestaurant.getCuisines(),"photos":[String](),"favoritedByCount": 1])
                     self.db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid])])
                     self.getLikers()
                 }
