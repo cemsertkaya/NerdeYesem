@@ -16,6 +16,7 @@ target 'NerdeYesem' do
     # Pods for testing
   end
   pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
