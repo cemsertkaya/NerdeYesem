@@ -48,7 +48,16 @@ url(string)
 
 You cannot take a photo with a simulator. If you do it crashes.
 
+Some restaurants have no photos on zomato. So photo view can be empty.
 
+***
+## Extras
+
+In restaurant details page, there are 2 label, one of them shows address and one of them shows zomato website url.
+
+If you tap address, you will go to iMap for directions.
+
+If you tap url, you will go to Safari.
 
 
 
