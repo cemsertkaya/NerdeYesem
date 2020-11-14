@@ -24,7 +24,7 @@
 ## Firebase Implemantation
 If a restaurant has more than 0 like, i push this restaurant to firestore placed under favorites collection.
 
-Every restaurant has a unique key that comes from zomato api and i use this unique kay as document id.
+Every restaurant has a unique key that comes from zomato api and i use this unique key as document id.
 
 In document i keep these fields:
 
