@@ -213,7 +213,7 @@ class SelectedOneViewController: UIViewController, UINavigationControllerDelegat
                 {
                     let favoritedBy = snapshot?.get("favoritedBy") as! [String]
                     let favoritedByCount = snapshot?.get("favoritedByCount") as! Int
-                    self.db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid]),"favoritedByCount":favoritedByCount-1])
+                    self.db.collection("favorites").document(self.selectedRestaurant.getId()).updateData(["favoritedBy":FieldValue.arrayUnion([self.user!.uid]),"favoritedByCount":favoritedByCount+1])
                     self.getLikers()
                 }
                 else//User Document does not exist, first it creates document
@@ -223,6 +223,7 @@ class SelectedOneViewController: UIViewController, UINavigationControllerDelegat
                     self.getLikers()
                 }
             }
+            
         }
     }
     
@@ -254,6 +255,7 @@ class SelectedOneViewController: UIViewController, UINavigationControllerDelegat
             {
                 numberOfLikers = 0
                 self.likeButton.setTitle("Like \(numberOfLikers)", for: .normal)
+                self.isUserLiked = false
             }
             
         }

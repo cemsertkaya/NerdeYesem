@@ -47,7 +47,7 @@ class BiometricsViewController: UIViewController
                     }
                     else
                     {
-                        let alert = UIAlertController(title: "Authentication failed", message: "You could not be verified; please try again.", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Authentication failed", message: "You could not be verified; p3lease try again.", preferredStyle: UIAlertController.Style.alert)
                         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                         alert.addAction(okButton)
                         self?.present(alert, animated: true, completion: nil)

@@ -35,14 +35,18 @@ cuisine(string)
 favoritedBy(string array): When a user likes the restaurant, i push this user's firebase auth id into the favoriteBy array.
 If a user take back its like , i delete from its id from favoriteBy array.
 
+favoritedByCount(Int): Counter of favoriteBy array
+
 name(string)
 
 photo(string)
 
 url(string)
 
+***
+## Warnings
 
-
+You cannot take a photo with a simulator. If you do it crashes.
 
 
 

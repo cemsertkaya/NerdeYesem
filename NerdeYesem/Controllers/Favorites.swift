@@ -27,7 +27,7 @@ class Favorites: UIViewController,UITableViewDelegate,UITableViewDataSource
         let db = Firestore.firestore()
         let fireStoreDatabase = Firestore.firestore()
         //Snapshot is added for real time update
-        fireStoreDatabase.collection("favorites").order(by: "favoritedByCount", descending: false).addSnapshotListener { (snapshot, error) in
+        fireStoreDatabase.collection("favorites").order(by: "favoritedByCount", descending: true).addSnapshotListener { (snapshot, error) in
             if error != nil
             {
                 print(error?.localizedDescription)
