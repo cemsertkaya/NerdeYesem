@@ -174,6 +174,13 @@ class SelectedOneViewController: UIViewController, UINavigationControllerDelegat
        let myAddress = selectedRestaurant.getAddress()
        let geoCoder = CLGeocoder()
        geoCoder.geocodeAddressString(myAddress) { (placemarks, error) in
+           if error != nil
+           {
+             let alert = UIAlertController(title: "Error", message:"Directions are not available between these locations.", preferredStyle: UIAlertController.Style.alert)
+             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+             alert.addAction(okButton)
+             self.present(alert, animated: true, completion: nil)
+           }
            guard let placemarks = placemarks?.first else { return }
            let location = placemarks.location?.coordinate ?? CLLocationCoordinate2D()
            guard let url = URL(string:"http://maps.apple.com/?daddr=\(location.latitude),\(location.longitude)") else { return }
